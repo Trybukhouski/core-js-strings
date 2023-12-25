@@ -178,8 +178,11 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const substrIndex = str.lastIndexOf(value);
+  if (str === '') return '';
+  if (substrIndex === -1) return str;
+  return str.slice(0, substrIndex) + str.slice(substrIndex + value.length);
 }
 
 /**
@@ -194,8 +197,18 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let sum = 0;
+  if (!!str && str !== '') {
+    // eslint-disable-next-line no-restricted-syntax, no-plusplus
+    for (let i = 0; i < str.length; i++) {
+      // eslint-disable-next-line no-unused-vars
+      sum += str.charCodeAt(i);
+      // eslint-disable-next-line no-plusplus
+    }
+  }
+  // eslint-disable-next-line no-undef
+  return sum;
 }
 
 /**
@@ -209,8 +222,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -224,8 +237,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -241,8 +254,11 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const minStr = `${minutes}`.padStart(2, 0);
+  const secStr = `${seconds}`.padStart(2, 0);
+
+  return `${minStr}:${secStr}`;
 }
 
 /**
